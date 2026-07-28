@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Amir",
+    "age": 22,
+    "weapon_name": "Sword and Shield",
+    "village_name": "Kokoto Village",
+    "begginer": false
+  },
+  {
+    "name": "Yoruichi",
+    "age": 26,
+    "weapon_name": "Hammer / Dual Blades",
+    "village_name": "Poke Village",
+    "begginer": false
+  }
+]
