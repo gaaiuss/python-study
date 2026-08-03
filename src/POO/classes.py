@@ -16,6 +16,7 @@ person2 = Person("Otávio", "Miranda")
 
 print(person1.name, person1.surname, sep="\n")
 print(person2.name, person2.surname, sep="\n")
+print()
 
 """
 To access the class attributes you can use the method `__dict__` or vars(obj).
@@ -25,5 +26,30 @@ Having a dict type class data, you can save it on a json file using dump.
 
 print(person1.__dict__)
 person3 = Person(
-    **person1.__dict__
-)  # Unpacking the key value pair into the class attributes
+    **person1.__dict__  # Unpacking the key value pair into the class attributes
+)
+print(person3.__dict__)
+print()
+
+"""
+@classmethod is basically an extension of the class itself, you can use a method
+directly from the class using the class as a parameter (cls), not the instance
+(self) like a normal method from an object.
+"""
+
+
+class Animal:
+    def __init__(self, name: str, age: int) -> None:
+        self.name = name
+        self.age = age
+
+    @classmethod
+    def create_without_name(cls, age: int) -> Animal:  # using cls instead of self
+        return cls("Anonymous", age)
+
+
+lion = Animal("Lion", 20)
+anonymous = Animal.create_without_name(30)
+
+print(lion.__dict__)
+print(anonymous.__dict__)
