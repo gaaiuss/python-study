@@ -10,9 +10,9 @@
 #   - The folder inside 'src/'
 # ============================
 [project]
-name = "project1"
+name = "python-study"
 version = "0.0.1"
-description = "project1"
+description = "python-study"
 readme = "README.md"
 license = "MIT"
 authors = [{ name = "gaaiuss", email = "caio.gui.castro@gmail.com" }]
@@ -20,21 +20,11 @@ requires-python = ">=3.14"
 dependencies = ["python-dotenv>=1.1.0"]
 
 [project.urls]
-# Homepage = "https://www.otaviomiranda.com.br/"
-# Documentation = "https://example.org"
-# Repository = "https://github.com/me/spam.git"
-# Issues = "https://github.com/me/spam/issues"
-# Changelog = "https://github.com/me/spam/blob/master/CHANGELOG.md"
+Repository = "https://github.com/gaaiuss/python-study"
 
 [project.optional-dependencies]
 dev = ["ruff", "pyright", "pytest", "pytest-xdist"]
 
-[project.scripts]
-# Defines the console commands. The key ('project1") is the command.
-# The value points to 'package_name.module_name:function_name'.
-# Ex: 'my_package.main:run' -> src/my_package/main.py (and the function inside).
-# Remember to sync the package name in 'known-first-party' of Ruff.
-project1 = "my_package.my_module:run_from_script"
 
 # ============================
 # Linting and auto format (Ruff)
@@ -94,10 +84,6 @@ quote-style = "double"
 indent-style = "space"
 line-ending = "lf"
 
-[tool.ruff.lint.isort]
-# Teaches Ruff what is the main package of the project.
-# It must be the same name of the folder inside the 'src/'.
-known-first-party = ["my_package"]
 
 # ============================
 # Typing (Pyright)
