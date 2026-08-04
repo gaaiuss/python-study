@@ -1,7 +1,7 @@
 # ruff: noqa: ANN201, ANN001, ANN003, ANN002, ANN202
 # type:ignore
-"""
-Decorator functions and decorators.
+"""Decorator functions and decorators.
+
 Decorate - Add / remove / restric / refactor
 Decorator functions are functions that decorate others.
 Decorators are used by Python for it to use decorator functions on another

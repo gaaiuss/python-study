@@ -1,4 +1,5 @@
-"""
+"""Generator Functions
+
 Generators are functions that knows how to 'pause'. Every generator is an
 iterator, you can navigate through (use the for loop etc), but an iterator is
 not a generator.

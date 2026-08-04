@@ -1,6 +1,5 @@
-"""
-Iterable x Iterator
--------------------
+"""Iterable x Iterator
+
 Iterable have the responsibility to store the values that will be iterated.
 Iterator just give you a value at a time, it only knows the next value of the
 iterable.
