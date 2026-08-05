@@ -28,7 +28,7 @@ Criar classes ContaPoupanca e ContaCorrente que herdam de Conta
     polimorfismo - as subclasses que implementam o método sacar)
 Criar classe Banco para AGREGAR classes de clientes e de contas (Agregação)
 Banco será responsável autenticar o cliente e as contas da seguinte maneira:
-    Banco tem contas e clentes (Agregação)
+    Banco tem contas e clientes (Agregação)
     * Checar se a agência é daquele banco
     * Checar se o cliente é daquele banco
     * Checar se a conta é daquele banco
@@ -45,65 +45,56 @@ class Account(ABC):
         self.account_number = account_number
         self.balance = 0.0
 
-    @abstractmethod
-    def deposit(self, value: float) -> None: ...
+    def deposit(self, value: float) -> None:
+        self.balance += value
 
     @abstractmethod
     def draw(self, value: float) -> None: ...
 
 
 class CheckingAccount(Account):
-    def __init__(self, agency: int, account_number: int) -> None:
-        super().__init__(agency, account_number)
-        self.limit = 1000.0
+    def draw(self, value: float) -> None:
+        self.balance -= value
 
-    def deposit(self, value: float) -> None:
-        self.balance += value
 
-    def _use_limit(self, new_balance: float) -> bool:
-        return new_balance < 0
-
+class SavingsAccount(Account):
     def draw(self, value: float) -> None:
         new_balance = self.balance - value
 
-        if self.balance < 0 and self.limit < 0:
-            print("You cannot draw, no limit/balance available.")
-        elif self._use_limit(new_balance):
-            self.balance = new_balance
-            self.limit += new_balance
-        else:
-            self.balance -= value
+        if new_balance < 0:
+            print("Insufficient balance to draw.")
+            return
 
-
-class SavingsAccount(Account): ...
+        self.balance = new_balance
 
 
 class Person:
-    def __init__(self) -> None:
-        self._name = None
-        self._age = None
+    def __init__(self, name: str, age: int) -> None:
+        self._name = name
+        self._age = age
 
     @property
-    def name(self) -> str | None:
+    def name(self) -> str:
         return self._name
 
-    @name.setter
-    def name(self, name: str) -> None:
-        self._name = name
-
     @property
-    def age(self) -> int | None:
+    def age(self) -> int:
         return self._age
-
-    @age.setter
-    def age(self, age: int) -> None:
-        self._age = age
 
 
 class Client(Person):
-    def __init__(self, account: Account) -> None:
-        super().__init__()
+    def __init__(self, name: str, age: int, account: Account) -> None:
+        super().__init__(name, age)
         self.account = account
+
+
+class Bank:
+    def __init__(self, name: str) -> None:
+        self.name = name
+        self.accounts = []
+        self.clients = []
+
+    def auth(self) -> bool: ...
 
 
 if __name__ == "__main__":
