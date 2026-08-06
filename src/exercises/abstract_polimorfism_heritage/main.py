@@ -35,19 +35,3 @@ Banco será responsável autenticar o cliente e as contas da seguinte maneira:
 Só será possível sacar se passar na autenticação do banco (descrita acima)
 Banco autentica por um método.
 """
-
-from exercises.abstract_polimorfism_heritage.accounts import (
-    CheckingAccount,
-    SavingsAccount,
-)
-from exercises.abstract_polimorfism_heritage.bank import Bank
-from exercises.abstract_polimorfism_heritage.person import Client
-
-if __name__ == "__main__":
-    check_acc = CheckingAccount(123, 123)
-    sav_acc = SavingsAccount(234, 234)
-    gaius = Client("Gaius", 26, check_acc)
-    banco_bostil = Bank(123)
-
-    banco_bostil.add_client(gaius)
-    banco_bostil.add_account(check_acc, sav_acc)
