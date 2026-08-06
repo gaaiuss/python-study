@@ -89,22 +89,34 @@ class Client(Person):
 
 
 class Bank:
-    def __init__(self, name: str) -> None:
-        self.name = name
-        self.accounts = []
-        self.clients = []
+    def __init__(self, agency: int) -> None:
+        self.agency = agency
+        self.accounts: list[Account] = []
+        self.clients: list[Client] = []
 
-    def auth(self) -> bool: ...
+    def add_client(self, *args: Client) -> None:
+        for client in args:
+            self.clients.append(client)
+
+    def add_account(self, *args: Account) -> None:
+        for account in args:
+            self.accounts.append(account)
+
+    def auth(self, client: Client, account: Account) -> bool:
+        return (
+            client in self.clients
+            and account in self.accounts
+            and self.agency == account.agency
+        )
 
 
 if __name__ == "__main__":
     check_acc = CheckingAccount(123, 123)
-    # check_acc.deposit(100.0)
-    check_acc.draw(1001.0)
+    sav_acc = SavingsAccount(234, 234)
+    gaius = Client("Gaius", 26, check_acc)
+    banco_bostil = Bank(123)
 
-    print(check_acc.__dict__)
+    banco_bostil.add_client(gaius)
+    banco_bostil.add_account(check_acc, sav_acc)
 
-    # gaius = Client(check_acc)
-    # gaius.name = "Gaius"
-
-    # print(gaius.__dict__)
+    print(banco_bostil.__dict__)
