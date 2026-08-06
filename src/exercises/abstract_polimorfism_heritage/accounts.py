@@ -13,6 +13,11 @@ class Account(ABC):
     @abstractmethod
     def draw(self, value: float) -> None: ...
 
+    def __repr__(self) -> str:
+        cls_name = type(self).__name__
+        attrs = f"{self.agency!r}, {self.account_number!r}, {self.balance!r}"
+        return f"{cls_name}({attrs})"
+
 
 class CheckingAccount(Account):
     def __init__(
@@ -30,6 +35,14 @@ class CheckingAccount(Account):
             return
 
         self.balance = new_balance
+
+    def __repr__(self) -> str:
+        cls_name = type(self).__name__
+        attrs = (
+            f"{self.agency!r}, {self.account_number!r}, {self.balance!r}, "
+            f"{self.limit!r}"
+        )
+        return f"{cls_name}({attrs})"
 
 
 class SavingsAccount(Account):
@@ -51,4 +64,4 @@ if __name__ == "__main__":
     save_acc.draw(50)
     save_acc.draw(50)
 
-    print(save_acc.__dict__)
+    print(save_acc)
