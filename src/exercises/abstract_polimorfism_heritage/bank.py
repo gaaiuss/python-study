@@ -2,7 +2,7 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from exercises.abstract_polimorfism_heritage.accounts import Account
-    from exercises.abstract_polimorfism_heritage.clients import Client
+    from exercises.abstract_polimorfism_heritage.person import Client
 
 
 class Bank:

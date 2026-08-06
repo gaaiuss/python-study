@@ -41,7 +41,7 @@ from exercises.abstract_polimorfism_heritage.accounts import (
     SavingsAccount,
 )
 from exercises.abstract_polimorfism_heritage.bank import Bank
-from exercises.abstract_polimorfism_heritage.clients import Client
+from exercises.abstract_polimorfism_heritage.person import Client
 
 if __name__ == "__main__":
     check_acc = CheckingAccount(123, 123)
